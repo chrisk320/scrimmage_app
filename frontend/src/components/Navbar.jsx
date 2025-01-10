@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Button, Flex, Spacer, Text, HStack, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Spacer, Text, HStack } from "@chakra-ui/react";
 import { FaBasketballBall } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -17,7 +18,7 @@ const Navbar = () => {
                 <Spacer />
 
                 <HStack spacing={4}>
-                    <Link>
+                    <Link to={"/login"}>
                         <Button colorScheme="blue" variant="solid" size="sm">
                             Login/Register
                         </Button>
