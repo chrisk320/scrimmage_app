@@ -13,8 +13,9 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({ setUser }) => {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -27,6 +28,7 @@ const Register = () => {
     });
 
     const toast = useToast();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,16 +43,10 @@ const Register = () => {
                 duration: 5000,
                 isClosable: true,
             });
-            setFormData({
-                username: "",
-                password: "",
-                firstName: "",
-                lastName: "",
-                city: "",
-                state: "",
-                skillLevel: "",
-                phoneNumber: "",
-            });
+            const { token, user } = res.data;
+            localStorage.setItem("token", token); // Save the token
+            setUser(user); // Set the registered user
+            navigate("/home"); // Redirect to the logged-in home page
         } catch (error) {
             toast({
                 title: "Registration failed",

@@ -13,10 +13,12 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({ setUser }) => {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,6 +32,10 @@ const LoginPage = () => {
         isClosable: true,
       });
       // Redirect to dashboard or home page
+      const { token, user } = res.data;
+      localStorage.setItem("token", token); // Save the token for authentication
+      setUser(user); // Set the logged-in user
+      navigate("/home"); // Redirect to the logged-in home page
     } catch (error) {
       toast({
         title: "Login failed",
