@@ -32,7 +32,24 @@ router.post("/register", async (req, res) => {
         });
 
         await newUser.save();
-        res.status(201).json({ message: "User registered successfully", username: username });
+
+        // Generate token
+        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+
+        // Send response
+        res.status(201).json({
+          message: "User registered successfully",
+          token,
+          user: {
+            id: newUser._id,
+            username: newUser.username,
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            city: newUser.city,
+            state: newUser.state,
+            skillLevel: newUser.skillLevel,
+          },
+        });
     } catch (error) {
         console.error("Error in creating user:", error.message);
         res.status(500).json({ message: "Error registering user" });
