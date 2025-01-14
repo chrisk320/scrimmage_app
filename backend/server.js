@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/auth.routes.js';
+import gameRoutes from './routes/game.routes.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -10,7 +11,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/games", gameRoutes);
 
 app.use(
     cors({
