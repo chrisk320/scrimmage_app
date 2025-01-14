@@ -9,9 +9,18 @@ import LoggedInHomePage from './pages/LoggedInHomePage.jsx';
 
 function App() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate(); // Hook for navigation
+
+  // Logout function
+  const logout = () => {
+    localStorage.removeItem("token"); // Remove token from localStorage
+    setUser(null); // Clear user state
+    navigate('/'); // Rediret to the home page
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user} logout={logout} />
       <Routes>
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/login" element={<LoginPage setUser={setUser} />} />

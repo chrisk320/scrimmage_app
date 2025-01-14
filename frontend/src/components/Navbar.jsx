@@ -3,7 +3,7 @@ import { Box, Button, Flex, Spacer, Text, HStack } from "@chakra-ui/react";
 import { FaBasketballBall } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user, logout }) => {
     return (
         <Box bg="blue.600" color="white" px={4} py={2} shadow="md">
             <Flex alignItems="center" justifyContent="space-between">
@@ -18,11 +18,17 @@ const Navbar = () => {
                 <Spacer />
 
                 <HStack spacing={4}>
-                    <Link to={"/login"}>
+                    {user ? (
+                        <Button colorScheme="red" onClick={logout} size="sm">
+                            Logout
+                        </Button>
+                    ) : (
+                        <Link to={"/login"}>
                         <Button colorScheme="blue" variant="solid" size="sm">
                             Login/Register
                         </Button>
                     </Link>
+                    )}
                 </HStack>
             </Flex>
         </Box>
