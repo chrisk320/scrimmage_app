@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { FaBasketballBall, FaMapMarkerAlt, FaUsers } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const LoggedInHomePage = ({ user }) => {
   return (
@@ -34,7 +35,9 @@ const LoggedInHomePage = ({ user }) => {
           <Heading as="h3" size="md" mt={4}>
             Create a Game
           </Heading>
-          <Button mt={4} colorScheme="blue">Start Now</Button>
+          <Link to="/home/create">
+            <Button mt={4} colorScheme="blue">Start Now</Button>
+          </Link>
         </Box>
       </SimpleGrid>
     </Container>
