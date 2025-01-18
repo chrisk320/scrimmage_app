@@ -28,7 +28,7 @@ const LoginPage = ({ setUser }) => {
         title: "Login successful!",
         description: "Welcome back!",
         status: "success",
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
       });
       // Redirect to dashboard or home page
@@ -41,7 +41,7 @@ const LoginPage = ({ setUser }) => {
         title: "Login failed",
         description: error.response?.data?.message || "Invalid credentials",
         status: "error",
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
       });
     }

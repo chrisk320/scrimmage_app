@@ -40,6 +40,8 @@ export const searchPark = async (req, res) => {
         const parks = response.data.results.map((park) => ({
             name: park.name,
             address: park.formatted_address,
+            location: park.geometry?.location || null,
+            placeId: park.place_id,
         }));
         res.status(200).json({ parks });
     } catch (error) {

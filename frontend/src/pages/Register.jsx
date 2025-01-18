@@ -40,7 +40,7 @@ const Register = ({ setUser }) => {
                 title: "Registration successful!",
                 description: res.data.message,
                 status: "success",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
             });
             const { token, user } = res.data;
@@ -52,7 +52,7 @@ const Register = ({ setUser }) => {
                 title: "Registration failed",
                 description: error.response?.data?.message || "Something went wrong",
                 status: "error",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
             });
         }
