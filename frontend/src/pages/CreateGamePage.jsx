@@ -107,8 +107,6 @@ const CreateGamePage = () => {
                 duration: 3000,
                 isClosable: true,
             });
-            setFormData({ city: "", state: "", park: "", currentTeamNumber: 0 }); // Reset the form
-            setSelectedPark(null);
             navigate("/home"); // Redirect to the logged-in home page
         } catch (error) {
             toast({
@@ -188,6 +186,20 @@ const CreateGamePage = () => {
                             </Text>
                         </Box>
                     )}
+
+                    <FormControl isRequired>
+                        <FormLabel color="black">Current Team Number</FormLabel>
+                        <Input
+                            type="number"
+                            placeholder="Enter the number of players in the team"
+                            value={formData.currentTeamNumber}
+                            onChange={(e) =>
+                                setFormData({ ...formData, currentTeamNumber: parseInt(e.target.value) })
+                            }
+                            color="black"
+                        />
+                    </FormControl>
+
                     <Button colorScheme="blue" type="submit" isDisabled={!formData.park}>
                             Create Game
                     </Button>

@@ -8,7 +8,7 @@ const Navbar = ({ user, logout }) => {
         <Box bg="blue.600" color="white" px={4} py={2} shadow="md">
             <Flex alignItems="center" justifyContent="space-between">
                 {/* Left side: Basketball icon */}
-                <HStack spacing={2}>
+                <HStack spacing={2} as={Link} to={user ? "/home" : "/"}>
                     <FaBasketballBall size={24} />
                     <Text fontSize="lg" fontWeight="bold">
                         Basketball Scrimmage
